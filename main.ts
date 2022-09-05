@@ -1,42 +1,15 @@
 radio.onReceivedString(function (receivedString) {
     basic.showIcon(IconNames.Duck)
-    iAmDuck = 1
+    iAmDuck = true
 })
 input.onGesture(Gesture.Shake, function () {
     radio.sendString("DUCK")
     if (iAmDuck) {
-        iAmDuck = 0
+        iAmDuck = false
         basic.clearScreen()
     }
 })
-let iAmDuck = 0
-radio.setGroup(23)
-iAmDuck = 0
-basic.forever(function () {
-    basic.showLeds(`
-        . . . . #
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        `)
-    basic.pause(100)
-    if (iAmDuck) {
-        basic.showLeds(`
-            . # # . .
-            # # # . .
-            . # # # #
-            . # # # .
-            . . . . .
-            `)
-    } else {
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . . . .
-            . . . . .
-            . . . . .
-            `)
-    }
-    basic.pause(5000)
-})
+let iAmDuck = false
+basic.clearScreen()
+radio.setGroup(1)
+iAmDuck = false
